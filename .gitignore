@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+env/
+
+# Node
+node_modules/
+dist/
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Model Checkpoints (Optional: Uncomment to exclude large weights)
+# *.pth
