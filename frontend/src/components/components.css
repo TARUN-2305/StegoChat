@@ -147,6 +147,29 @@
     transform: none;
 }
 
+.icon-btn.active-lock {
+    color: var(--accent);
+    background: rgba(252, 0, 255, 0.1);
+}
+
+.password-input-wrapper {
+    width: 120px;
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.password-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
 .attachments-preview {
     display: flex;
     gap: 10px;
@@ -293,4 +316,174 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* Attack UI */
+.attack-trigger-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    color: #ff8888;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.stego-image-container:hover .attack-trigger-btn {
+    opacity: 1;
+}
+
+.attack-trigger-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+    color: white;
+}
+
+.attack-menu {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    background: rgba(20, 0, 0, 0.9);
+    border: 1px solid #552222;
+    border-radius: 8px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    z-index: 10;
+}
+
+.menu-header {
+    font-size: 0.7rem;
+    color: #ff8888;
+    padding: 4px 8px;
+    border-bottom: 1px solid #552222;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.attack-menu button {
+    background: transparent;
+    color: #ddd;
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.attack-menu button:hover {
+    background: rgba(255, 50, 50, 0.2);
+    color: white;
+}
+
+.attack-result-panel {
+    margin-top: 10px;
+    background: rgba(50, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 50, 50, 0.3);
+}
+
+.simple-border {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+}
+
+.action-btn-small {
+    margin-top: 5px;
+    width: 100%;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn-small:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.action-btn-small:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+/* Login Screen */
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+}
+
+.login-card {
+    width: 350px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--surface-border);
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon .icon {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+    color: white;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-with-icon input:focus {
+    border-color: var(--primary);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: transform 0.2s;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+.auth-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
 }

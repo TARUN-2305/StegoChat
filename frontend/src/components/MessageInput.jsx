@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
-import { Send, Image as ImageIcon, Lock, X } from 'lucide-react';
+import { Send, Image as ImageIcon, Lock, X, Key } from 'lucide-react';
 import './components.css';
 
 const MessageInput = ({ onSend, isSending }) => {
     const [text, setText] = useState('');
     const [secretFile, setSecretFile] = useState(null);
     const [coverFile, setCoverFile] = useState(null);
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const secretInputRef = useRef(null);
     const coverInputRef = useRef(null);
@@ -15,12 +17,15 @@ const MessageInput = ({ onSend, isSending }) => {
         if ((!text && !secretFile)) return;
 
         // Send
-        onSend({ text, secretFile, coverFile });
+        onSend({ text, secretFile, coverFile, password });
 
         // Clear state
         setText('');
         setSecretFile(null);
         setCoverFile(null);
+        setPassword('');
+        setShowPassword(false);
+
         if (secretInputRef.current) secretInputRef.current.value = '';
         if (coverInputRef.current) coverInputRef.current.value = '';
     };
@@ -74,6 +79,19 @@ const MessageInput = ({ onSend, isSending }) => {
                     accept="image/*"
                 />
 
+                {showPassword && (
+                    <div className="password-input-wrapper glass">
+                        <input
+                            type="text" // Visible text so user can verify key
+                            className="password-input"
+                            placeholder="Enter Key"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            autoFocus
+                        />
+                    </div>
+                )}
+
                 <div className="text-input-wrapper">
                     <input
                         type="text"
@@ -86,6 +104,15 @@ const MessageInput = ({ onSend, isSending }) => {
                 </div>
 
                 {/* Action Buttons */}
+                <button
+                    type="button"
+                    className={`icon-btn ${showPassword ? 'active-lock' : ''}`}
+                    onClick={() => setShowPassword(!showPassword)}
+                    title="Encrypt Message (AES-256)"
+                >
+                    <Key size={20} />
+                </button>
+
                 <button
                     type="button"
                     className={`icon-btn ${secretFile ? 'active' : ''}`}
